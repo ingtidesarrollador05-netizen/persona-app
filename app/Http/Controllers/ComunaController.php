@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comuna;
+use app\Models\Comuna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Pagination\Paginator;
 
 class ComunaController extends Controller
 {
@@ -15,9 +16,14 @@ class ComunaController extends Controller
      */
     public function index()
     {
-        $comunas = Comuna::all();
-        return view('comunas.index', ['comunas' => $comunas]);
+        $comunas = DB ::table('tb_comuna')
+        ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
+        ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
+        ->get();
+        // ->paginate(15);
 
+        // return view('comunas.index', [compact('comunas'));
+        return view('comunas.index', ['comunas' => $comunas]);
     }
 
     /**
