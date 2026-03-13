@@ -109,6 +109,8 @@ class ComunaController extends Controller
         ->get();
 
         return view('comunas.index', ['comunas' => $comuna]);
+
+        //comentario prueba
     }
 
     /**
