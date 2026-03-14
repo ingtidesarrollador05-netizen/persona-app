@@ -15,7 +15,7 @@
 
   <body>
     <div class="container">
-        <h1>Comune List</h1>
+        <h1>Lista</h1>
         <a href="{{route ('comunas.create') }}" class="btn btn-success">Add</a>
         <table class="table">
             <thead>
@@ -25,26 +25,28 @@
                     <th scope="col">Municipio</th>
                     <th scope="col">Departamento</th>
                     <th scope="col">Pais</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($comunas as $comuna)
                 <tr>
-                    <th scope= "row">{{ $comuna->comu_codi }}</th>
-                    <td>{{ $comuna->comu_nomb }}</td>
-                    <td>{{ $comuna->muni_nomb }}</td>
+                    <th scope= "row">{{ $comuna->comu_codi }}</th> 
+                    <td>{{ $comuna->muni_nomb }}</td>  {{-- Comuna--}}
+                    <td>{{ $comuna->depa_nomb }}</td>   {{--Municipio--}}
+                    <td>{{ $comuna->pais_nomb }}</td>   {{--Departamento--}}
                     <td>
-                      {{-- Ruta indica para ir a Comunas.edi --}}
-                      <a href="{{route('comunas.edit',['comuna'=>$comuna ->comu_codi]) }}" 
-                          class="btn btn-info">Edit</a>
-                          {{-- ruta para gestionar la eliminacion de datos --}}
-                      <form action="{{route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}"
-                        method='POST' style="display: :inline-block">
+                        {{-- Botón Editar --}}
+                        <a href="{{ route('comunas.edit', ['comuna' => $comuna->comu_codi]) }}" class="btn btn-info">Edit</a>
+
+                        {{-- Formulario Eliminar --}}
+                        <form action="{{ route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}" 
+                        method="POST" style="display: inline-block">
                         @method('DELETE')
                         @csrf
-                        <input class="btn btn-danger" type="submit" valu="Delete" >
-                      </form>
-                    </td>
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                        </form>
+                      </td>
                 </tr>
                 @endforeach
             </tbody>
