@@ -20,20 +20,27 @@
         @method('PUT')
         @csrf
         <div class="mb-3">
+
+            {{-- campo id --}}
             <label for="name" class="form-label">Id</label>
             <input type="text" class="form-control" id="id" aria-describedby="codigoHelp" name="id" 
                 disabled = "disabled" value="{{$comuna->comu_codi}}">
             <div id="idHelp" class="form-text">Comune Id</div>
         </div>
+
+        {{-- campo Comuna editado --}}
         <div class="mb-3">
-            <label for="name" class="form-label">Comune</label>
+            <label for="name" class="form-label">Comuna</label>
             <input type="text" required class="form-control" id="name" placeholder="Comuna name."
                 name="name" value="{{$comuna->comu_nomb}}">
         </div>
 
-        <label for="municipality">Municipality</label>
+        {{-- campo municiopio --}}
+        <label for="municipality">Municipio</label>
         <select class="form-control" id="municipality" name="code" required>
             <option selected disabled value="">Choose one..</option>
+
+            {{--  --}}
             @foreach ($municipios as $municipio)
                 @if ($municipio->muni_codi == $comuna->muni_codi)
                     <option select value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
@@ -43,8 +50,8 @@
             @endforeach
         </select>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{route('comunas.index') }}" class="btn btn-warning">Cancel</a>
+            <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+            <a href="{{route('comunas.index') }}" class="btn btn-warning">Chao</a>
         </div>
         </form>
 </div>

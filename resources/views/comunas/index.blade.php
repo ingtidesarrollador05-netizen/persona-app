@@ -19,11 +19,12 @@
         <a href="{{route ('comunas.create') }}" class="btn btn-success">Add</a>
         <table class="table">
             <thead>
+              {{-- titulos de columnas --}}
                 <tr>
                     <th scope="col">Code</th>
-                    <th scope="col">Commune</th>
-                    <th scope="col">Municipality</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Pais</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,9 +34,10 @@
                     <td>{{ $comuna->comu_nomb }}</td>
                     <td>{{ $comuna->muni_nomb }}</td>
                     <td>
+                      {{-- Ruta indica para ir a Comunas.edi --}}
                       <a href="{{route('comunas.edit',['comuna'=>$comuna ->comu_codi]) }}" 
                           class="btn btn-info">Edit</a>
-                          
+                          {{-- ruta para gestionar la eliminacion de datos --}}
                       <form action="{{route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}"
                         method='POST' style="display: :inline-block">
                         @method('DELETE')

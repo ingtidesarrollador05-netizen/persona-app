@@ -15,22 +15,24 @@
 
   <body>
     <div class="container">
-    <h1>Add Comuna</h1>
+    <h1>Agregar Comuna</h1>
     <form method="POST" action="{{ route('comunas.store') }}">
         @csrf
+        {{-- Campo de Code o Id --}}
         <div class="mb-3">
-            <label for="name" class="form-label">Code</label>
+            <label for="name" class="form-label">Code o Id</label>
             <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="name" 
                 disabled = "disabled">
             <div id="idHelp" class="form-text">Comune Code</div>
         </div>
+        {{-- Campo de Comuna --}}
         <div class="mb-3">
-            <label for="name" class="form-label">Comune</label>
+            <label for="name" class="form-label">Comuna</label>
             <input type="text" required class="form-control" id="exampleInputPassword1" aria-describedby="nameHelp" name="name" placeholder="Comuna name.">
             <div id="nameHelp" class="form-text">Enter the comune name.</div>
         </div>
-
-        <label for="municipality">Municipality</label>
+        {{-- Campo de Municipio --}}
+        <label for="municipality">Municipio</label>
         <select class="form-control" id="municipality" name="code" required>
             <option selected disabled value="">Choose one..</option>
             @foreach ($municipios as $municipio)
@@ -38,8 +40,8 @@
             @endforeach
         </select>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="{{route('comunas.index') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{{route('comunas.index') }}" class="btn btn-secondary">Chao</a>
         </div>
         </form>
 </div>
